@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org-fortiss-sfit-product:FileProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org-fortiss-sfit-assembly="http://www.fortiss.org/sfit/assembly" xmlns:org-fortiss-sfit-capabilities="http://www.fortiss.org/sfit/capabilities" xmlns:org-fortiss-sfit-characteristics="http://www.fortiss.org/sfit/characteristics" xmlns:org-fortiss-sfit-deployment="http://www.fortiss.org/sfit/deployment" xmlns:org-fortiss-sfit-process="http://www.fortiss.org/sfit/process" xmlns:org-fortiss-sfit-product="http://www.fortiss.org/sfit/sfitproduct" xmlns:org-fortiss-sfit-product_1="http://www.fortiss.org/sfit/product" xmlns:org-fortiss-sfit-product_2="http://www.fortiss.org/sfit/product/part" xmlns:org-fortiss-sfit-resources="http://www.fortiss.org/sfit/resources" xmlns:org-fortiss-sfit-restriction="http://www.fortiss.org/sfit/restriction" xmlns:org-fortiss-tooling-base-model-layout="http://www.fortiss.org/tooling/base/model/layout" xmi:id="0" name="Pen">
+  <rootElements xsi:type="org-fortiss-sfit-capabilities:CapabilityList" xmi:id="1" id="1" name="Capabilities">
+    <capability xmi:id="105" id="105" name="PrintOnTube">
+      <parameter xmi:id="137" id="137" name="ImprintWidth_mm">
+        <type xsi:type="org-fortiss-sfit-capabilities:IntParamType"/>
+      </parameter>
+      <parameter xmi:id="138" id="138" name="ImprintHeight_mm">
+        <type xsi:type="org-fortiss-sfit-capabilities:IntParamType"/>
+      </parameter>
+    </capability>
+    <capability xmi:id="106" id="106" name="Screw">
+      <parameter xmi:id="123" id="123" name="Torque">
+        <type xsi:type="org-fortiss-sfit-capabilities:IntParamType"/>
+      </parameter>
+      <parameter xmi:id="124" id="124" name="GraspMechanism">
+        <type xsi:type="org-fortiss-sfit-capabilities:EnumParamType">
+          <member xmi:id="126" id="126" name="Torx"/>
+          <member xmi:id="127" id="127" name="PickerArm"/>
+        </type>
+      </parameter>
+    </capability>
+    <capability xmi:id="122" id="122" name="Glue"/>
+    <capability xmi:id="199" id="199" name="PickAndPlace">
+      <parameter xmi:id="200" id="200" name="ObjectDiameter_mm">
+        <type xsi:type="org-fortiss-sfit-capabilities:IntParamType"/>
+      </parameter>
+    </capability>
+  </rootElements>
+  <rootElements xsi:type="org-fortiss-sfit-characteristics:FeatureModel" xmi:id="2" id="2" name="Feature Model">
+    <subFeatures optional="true">
+      <feature xsi:type="org-fortiss-sfit-characteristics:FeatureContainer" xmi:id="9" id="9" name="CustomImprint">
+        <constraints xmi:id="16" id="16" name="ConflictsWithTwist" comment="The Head for a Twist Pen cannot be printed." target="12" constraintType="Excludes"/>
+      </feature>
+    </subFeatures>
+    <subFeatures>
+      <feature xsi:type="org-fortiss-sfit-characteristics:AlternativeFeature" xmi:id="10" id="10" name="SlidingMechanism">
+        <alternatives xsi:type="org-fortiss-sfit-characteristics:FeatureContainer" xmi:id="11" id="11" name="PushToOpen"/>
+        <alternatives xsi:type="org-fortiss-sfit-characteristics:FeatureContainer" xmi:id="12" id="12" name="TwistToOpen"/>
+      </feature>
+    </subFeatures>
+  </rootElements>
+  <rootElements xsi:type="org-fortiss-sfit-resources:ResourceList" xmi:id="3" id="3" name="Resources">
+    <resources xmi:id="130" id="130" name="Siemens_PlasticTubePrinter">
+      <image xmi:id="282" id="282" uri="Images/process_variant_horizontal.png"/>
+      <capabilityInstanceSet xmi:id="131" id="131" capability="105">
+        <parameterInstanceSet parameter="137">
+          <valueSet xsi:type="org-fortiss-sfit-capabilities:IntParamValueSet" max="25"/>
+        </parameterInstanceSet>
+        <parameterInstanceSet parameter="138">
+          <valueSet xsi:type="org-fortiss-sfit-capabilities:IntParamValueSet" max="11"/>
+        </parameterInstanceSet>
+      </capabilityInstanceSet>
+    </resources>
+    <resources xmi:id="132" id="132" name="Rexroth_PickAndScrewUnit">
+      <capabilityInstanceSet xmi:id="133" id="133" capability="106">
+        <parameterInstanceSet parameter="123">
+          <valueSet xsi:type="org-fortiss-sfit-capabilities:IntParamValueSet" max="57"/>
+        </parameterInstanceSet>
+        <parameterInstanceSet parameter="124">
+          <valueSet xsi:type="org-fortiss-sfit-capabilities:EnumParamValueSet" containedMembers="126 127"/>
+        </parameterInstanceSet>
+      </capabilityInstanceSet>
+      <capabilityInstanceSet xmi:id="280" id="280" capability="199">
+        <parameterInstanceSet parameter="200">
+          <valueSet xsi:type="org-fortiss-sfit-capabilities:IntParamValueSet" min="6" max="42"/>
+        </parameterInstanceSet>
+      </capabilityInstanceSet>
+    </resources>
+    <resources xmi:id="134" id="134" name="Rexroth_GlueApplicator">
+      <capabilityInstanceSet xmi:id="135" id="135" capability="122"/>
+    </resources>
+  </rootElements>
+  <rootElements xsi:type="org-fortiss-sfit-product_1:ProductVariantConfigurationList" xmi:id="4" id="4" name="Product List" partList="5">
+    <productVariants xmi:id="192" id="192" name="AdvertismentPen" featureReference="2">
+      <optionalityConfigurations optionalFeatureRef="//@rootElements.1/@subFeatures.0">
+        <featureConfiguration xsi:type="org-fortiss-sfit-product_1:FeatureContainerConfiguration" featureReference="9"/>
+      </optionalityConfigurations>
+      <optionalityConfigurations optionalFeatureRef="//@rootElements.1/@subFeatures.1">
+        <featureConfiguration xsi:type="org-fortiss-sfit-product_1:AlternativeFeatureConfiguration" featureReference="10">
+          <featureConfiguration xsi:type="org-fortiss-sfit-product_1:FeatureContainerConfiguration" featureReference="11"/>
+        </featureConfiguration>
+      </optionalityConfigurations>
+    </productVariants>
+    <productVariants xmi:id="195" id="195" name="NeutralTwistPen" featureReference="2">
+      <optionalityConfigurations optionalFeatureRef="//@rootElements.1/@subFeatures.0"/>
+      <optionalityConfigurations optionalFeatureRef="//@rootElements.1/@subFeatures.1">
+        <featureConfiguration xsi:type="org-fortiss-sfit-product_1:AlternativeFeatureConfiguration" featureReference="10">
+          <featureConfiguration xsi:type="org-fortiss-sfit-product_1:FeatureContainerConfiguration" featureReference="12"/>
+        </featureConfiguration>
+      </optionalityConfigurations>
+    </productVariants>
+    <productVariants xmi:id="196" id="196" name="NeutralPushPen" featureReference="2">
+      <optionalityConfigurations optionalFeatureRef="//@rootElements.1/@subFeatures.0"/>
+      <optionalityConfigurations optionalFeatureRef="//@rootElements.1/@subFeatures.1">
+        <featureConfiguration xsi:type="org-fortiss-sfit-product_1:AlternativeFeatureConfiguration" featureReference="10">
+          <featureConfiguration xsi:type="org-fortiss-sfit-product_1:FeatureContainerConfiguration" featureReference="11"/>
+        </featureConfiguration>
+      </optionalityConfigurations>
+    </productVariants>
+    <productVariants xmi:id="198" id="198" name="LowCostPen" featureReference="2">
+      <optionalityConfigurations optionalFeatureRef="//@rootElements.1/@subFeatures.0"/>
+      <optionalityConfigurations optionalFeatureRef="//@rootElements.1/@subFeatures.1">
+        <featureConfiguration xsi:type="org-fortiss-sfit-product_1:AlternativeFeatureConfiguration" featureReference="10">
+          <featureConfiguration xsi:type="org-fortiss-sfit-product_1:FeatureContainerConfiguration" featureReference="12"/>
+        </featureConfiguration>
+      </optionalityConfigurations>
+    </productVariants>
+  </rootElements>
+  <rootElements xsi:type="org-fortiss-sfit-product_2:PartList" xmi:id="5" id="5" name="Bill of Materials">
+    <containedParts xsi:type="org-fortiss-sfit-product_2:ComposedPart" xmi:id="70" id="70" name="Pen">
+      <restriction xsi:type="org-fortiss-sfit-restriction:RestrictionLiteral" stringRepresentation=""/>
+      <compositeParts xsi:type="org-fortiss-sfit-product_2:ComposedPart" xmi:id="31" id="31" name="Body">
+        <restriction xsi:type="org-fortiss-sfit-restriction:RestrictionLiteral" stringRepresentation=""/>
+      </compositeParts>
+      <compositeParts xsi:type="org-fortiss-sfit-product_2:ComposedPart" xmi:id="32" id="32" name="PushToOpenMechanism">
+        <restriction xsi:type="org-fortiss-sfit-restriction:RestrictionLiteral" stringRepresentation="PushToOpen" literal="11"/>
+        <compositeParts xsi:type="org-fortiss-sfit-product_2:ComposedPart" xmi:id="33" id="33" name="Spring">
+          <restriction xsi:type="org-fortiss-sfit-restriction:RestrictionLiteral" stringRepresentation=""/>
+        </compositeParts>
+        <compositeParts xsi:type="org-fortiss-sfit-product_2:ComposedPart" xmi:id="34" id="34" name="Button">
+          <restriction xsi:type="org-fortiss-sfit-restriction:RestrictionLiteral" stringRepresentation=""/>
+        </compositeParts>
+      </compositeParts>
+      <compositeParts xsi:type="org-fortiss-sfit-product_2:ComposedPart" xmi:id="35" id="35" name="TwistPusher">
+        <restriction xsi:type="org-fortiss-sfit-restriction:RestrictionLiteral" stringRepresentation="TwistToOpen" literal="12"/>
+      </compositeParts>
+      <compositeParts xsi:type="org-fortiss-sfit-product_2:PartAlternative" xmi:id="38" id="38" name="Head">
+        <restriction xsi:type="org-fortiss-sfit-restriction:RestrictionLiteral" stringRepresentation=""/>
+        <alternativeParts xsi:type="org-fortiss-sfit-product_2:ComposedPart" xmi:id="39" id="39" name="StandardHead">
+          <restriction xsi:type="org-fortiss-sfit-restriction:RestrictionNegation" stringRepresentation="NOT TwistToOpen">
+            <operand xsi:type="org-fortiss-sfit-restriction:RestrictionLiteral" stringRepresentation="TwistToOpen" literal="12"/>
+          </restriction>
+        </alternativeParts>
+        <alternativeParts xsi:type="org-fortiss-sfit-product_2:ComposedPart" xmi:id="40" id="40" name="TwistableHead">
+          <restriction xsi:type="org-fortiss-sfit-restriction:RestrictionLiteral" stringRepresentation="TwistToOpen" literal="12"/>
+        </alternativeParts>
+      </compositeParts>
+      <compositeParts xsi:type="org-fortiss-sfit-product_2:PartAlternative" xmi:id="201" id="201" name="Cartridge">
+        <restriction xsi:type="org-fortiss-sfit-restriction:RestrictionLiteral" stringRepresentation=""/>
+        <alternativeParts xsi:type="org-fortiss-sfit-product_2:ComposedPart" xmi:id="202" id="202" name="5mm_Cartridge_blue">
+          <restriction xsi:type="org-fortiss-sfit-restriction:RestrictionLiteral" stringRepresentation="PushToOpen" literal="11"/>
+        </alternativeParts>
+        <alternativeParts xsi:type="org-fortiss-sfit-product_2:ComposedPart" xmi:id="203" id="203" name="6mm_Cartridge_blue">
+          <restriction xsi:type="org-fortiss-sfit-restriction:DefaultRestriction" stringRepresentation="DEFAULT"/>
+        </alternativeParts>
+      </compositeParts>
+    </containedParts>
+  </rootElements>
+  <rootElements xsi:type="org-fortiss-sfit-assembly:Assembly" xmi:id="6" id="6" name="Assembly Line">
+    <containedElements xsi:type="org-fortiss-sfit-assembly:Station" xmi:id="140" id="140" name="PP_Cartridge&amp;Button" resourceList="132">
+      <connectors xsi:type="org-fortiss-sfit-assembly:StationOutConnector" xmi:id="163" id="163" name="port" outgoing="165">
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="108" height="72"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="cpos"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="cdim" width="0" height="0"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="60" orientation="EAST"/>
+      </connectors>
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="229" height="160"/>
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos" x="83" y="208"/>
+    </containedElements>
+    <containedElements xsi:type="org-fortiss-sfit-assembly:Station" xmi:id="141" id="141" name="PriningStation" resourceList="130">
+      <connectors xsi:type="org-fortiss-sfit-assembly:StationOutConnector" xmi:id="217" id="217" name="port" outgoing="219">
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="108" height="72"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="cpos"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="cdim" width="0" height="0"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="192" orientation="SOUTH"/>
+      </connectors>
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="217" height="160"/>
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos" x="360" y="12"/>
+    </containedElements>
+    <containedElements xsi:type="org-fortiss-sfit-assembly:Station" xmi:id="142" id="142" name="PP_OpeningMechanism" resourceList="132">
+      <connectors xsi:type="org-fortiss-sfit-assembly:StationInConnector" xmi:id="164" id="164" name="port2" incoming="165">
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos" y="-60"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="108" height="72"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="cpos"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="cdim" width="0" height="0"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="60" orientation="WEST"/>
+      </connectors>
+      <connectors xsi:type="org-fortiss-sfit-assembly:StationOutConnector" xmi:id="222" id="222" name="port" outgoing="224">
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos" y="36"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="108" height="72"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="cpos"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="cdim" width="0" height="0"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="36" orientation="EAST"/>
+      </connectors>
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="229" height="160"/>
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos" x="347" y="208"/>
+    </containedElements>
+    <containedElements xsi:type="org-fortiss-sfit-assembly:Station" xmi:id="144" id="144" name="Screwing" resourceList="132">
+      <connectors xsi:type="org-fortiss-sfit-assembly:StationInConnector" xmi:id="228" id="228" name="port" incoming="229">
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="108" height="72"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="cpos"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="cdim" width="0" height="0"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="60"/>
+      </connectors>
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="200" height="160"/>
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos" x="660" y="312"/>
+    </containedElements>
+    <containedElements xsi:type="org-fortiss-sfit-assembly:Station" xmi:id="145" id="145" name="Glue" resourceList="134 132">
+      <connectors xsi:type="org-fortiss-sfit-assembly:StationInConnector" xmi:id="218" id="218" name="port" incoming="219">
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="108" height="72"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="cpos"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="cdim" width="0" height="0"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="48" orientation="WEST"/>
+      </connectors>
+      <connectors xsi:type="org-fortiss-sfit-assembly:StationInConnector" xmi:id="223" id="223" name="port1" incoming="224">
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="108" height="72"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="cpos"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="cdim" width="0" height="0"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="72" orientation="WEST"/>
+      </connectors>
+      <connectors xsi:type="org-fortiss-sfit-assembly:StationOutConnector" xmi:id="227" id="227" name="port2" outgoing="229">
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="108" height="72"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="cpos"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="cdim" width="0" height="0"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="108" orientation="SOUTH"/>
+      </connectors>
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="200" height="160"/>
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos" x="612" y="120"/>
+    </containedElements>
+    <connections xsi:type="org-fortiss-sfit-assembly:AssemblyConnection" xmi:id="165" id="165" source="163" target="164">
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Points" key="points"/>
+    </connections>
+    <connections xsi:type="org-fortiss-sfit-assembly:AssemblyConnection" xmi:id="219" id="219" source="217" target="218">
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Points" key="points"/>
+    </connections>
+    <connections xsi:type="org-fortiss-sfit-assembly:AssemblyConnection" xmi:id="224" id="224" source="222" target="223">
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Points" key="points"/>
+    </connections>
+    <connections xsi:type="org-fortiss-sfit-assembly:AssemblyConnection" xmi:id="229" id="229" source="227" target="228">
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Points" key="points"/>
+    </connections>
+    <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos" x="108" y="180"/>
+    <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="108" height="72"/>
+    <restrictions xsi:type="org-fortiss-sfit-restriction:RestrictionLiteral" stringRepresentation=""/>
+  </rootElements>
+  <rootElements xsi:type="org-fortiss-sfit-deployment:ProcessAssemblyDeployment" xmi:id="7" id="7" name="Process Assembly Deployment" stepContainer="8" assemblyLine="6">
+    <connections xsi:type="org-fortiss-sfit-deployment:ProcessStepStationDeployment" xmi:id="249" id="249" processStep="72" station="140"/>
+    <connections xsi:type="org-fortiss-sfit-deployment:ProcessStepStationDeployment" xmi:id="259" id="259" processStep="44" station="140"/>
+    <connections xsi:type="org-fortiss-sfit-deployment:ProcessStepStationDeployment" xmi:id="292" id="292" processStep="86" station="142"/>
+    <connections xsi:type="org-fortiss-sfit-deployment:ProcessStepStationDeployment" xmi:id="293" id="293" processStep="46" station="141"/>
+    <subDeploymentMap key="87">
+      <value stepContainer="87"/>
+    </subDeploymentMap>
+    <subDeploymentMap>
+      <value/>
+    </subDeploymentMap>
+    <subDeploymentMap key="43">
+      <value stepContainer="43">
+        <connections xsi:type="org-fortiss-sfit-deployment:ProcessStepStationDeployment" xmi:id="256" id="256" processStep="108" station="145"/>
+        <connections xsi:type="org-fortiss-sfit-deployment:ProcessStepStationDeployment" xmi:id="258" id="258" processStep="230" station="144"/>
+      </value>
+    </subDeploymentMap>
+    <subDeploymentMap key="47">
+      <value stepContainer="47"/>
+    </subDeploymentMap>
+    <subDeploymentMap key="90">
+      <value stepContainer="90"/>
+    </subDeploymentMap>
+    <subDeploymentMap key="107">
+      <value stepContainer="107">
+        <connections xsi:type="org-fortiss-sfit-deployment:ProcessStepStationDeployment" xmi:id="295" id="295" processStep="115" station="144"/>
+      </value>
+    </subDeploymentMap>
+    <subDeploymentMap key="50">
+      <value stepContainer="50"/>
+    </subDeploymentMap>
+    <subDeploymentMap key="264">
+      <value stepContainer="264"/>
+    </subDeploymentMap>
+  </rootElements>
+  <rootElements xsi:type="org-fortiss-sfit-process:Process" xmi:id="8" id="8" name="Recipe">
+    <containedElements xsi:type="org-fortiss-sfit-process:VariantContainer" xmi:id="42" id="42" name="MountHeadToBody">
+      <containedElements xsi:type="org-fortiss-sfit-process:Variant" xmi:id="43" id="43" name="GlueTwistableHead">
+        <containedElements xsi:type="org-fortiss-sfit-process:Step" xmi:id="108" id="108" name="Apply Glue" requiredCapability="122">
+          <connectors xsi:type="org-fortiss-sfit-process:ProcessElementInConnector" xmi:id="109" id="109" name="Incoming" incoming="246">
+            <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="12" orientation="WEST"/>
+          </connectors>
+          <connectors xsi:type="org-fortiss-sfit-process:ProcessElementOutConnector" xmi:id="231" id="231" name="Outcome" outgoing="245">
+            <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="24" orientation="EAST"/>
+          </connectors>
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="145" height="80"/>
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos" x="132" y="72"/>
+          <restrictedParameterInstanceSets>
+            <restriction xsi:type="org-fortiss-sfit-restriction:RestrictionLiteral" stringRepresentation=""/>
+          </restrictedParameterInstanceSets>
+        </containedElements>
+        <containedElements xsi:type="org-fortiss-sfit-process:Step" xmi:id="230" id="230" name="MountHeadToBody">
+          <connectors xsi:type="org-fortiss-sfit-process:ProcessElementInConnector" xmi:id="232" id="232" name="Incoming" incoming="245">
+            <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="12" orientation="WEST"/>
+          </connectors>
+          <connectors xsi:type="org-fortiss-sfit-process:ProcessElementInConnector" xmi:id="233" id="233" name="Incoming" incoming="247">
+            <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="36" orientation="WEST"/>
+          </connectors>
+          <connectors xsi:type="org-fortiss-sfit-process:ProcessElementOutConnector" xmi:id="234" id="234" name="Outcome" outgoing="248">
+            <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="24" orientation="EAST"/>
+            <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos" x="12" y="60"/>
+          </connectors>
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="205" height="80"/>
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos" x="276" y="132"/>
+        </containedElements>
+        <connections xsi:type="org-fortiss-sfit-process:ProcessElementConnection" xmi:id="245" id="245" source="231" target="232">
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Points" key="points"/>
+        </connections>
+        <connections xsi:type="org-fortiss-sfit-process:ProcessElementConnection" xmi:id="246" id="246" source="59" target="109">
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Points" key="points"/>
+        </connections>
+        <connections xsi:type="org-fortiss-sfit-process:ProcessElementConnection" xmi:id="247" id="247" source="65" target="233">
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Points" key="points"/>
+        </connections>
+        <connections xsi:type="org-fortiss-sfit-process:ProcessElementConnection" xmi:id="248" id="248" source="234" target="66">
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Points" key="points"/>
+        </connections>
+        <restriction xsi:type="org-fortiss-sfit-restriction:RestrictionLiteral" stringRepresentation="TwistableHead" literal="40"/>
+      </containedElements>
+      <containedElements xsi:type="org-fortiss-sfit-process:Variant" xmi:id="107" id="107" name="ScrewPushToOpenHead">
+        <containedElements xsi:type="org-fortiss-sfit-process:Step" xmi:id="115" id="115" name="SrewHeadAndBody" requiredCapability="106">
+          <connectors xsi:type="org-fortiss-sfit-process:ProcessElementInConnector" xmi:id="116" id="116" name="Incoming" incoming="119">
+            <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="12" orientation="WEST"/>
+          </connectors>
+          <connectors xsi:type="org-fortiss-sfit-process:ProcessElementInConnector" xmi:id="117" id="117" name="Incoming" incoming="120">
+            <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="36" orientation="WEST"/>
+          </connectors>
+          <connectors xsi:type="org-fortiss-sfit-process:ProcessElementOutConnector" xmi:id="118" id="118" name="Outcome" outgoing="121">
+            <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="24" orientation="EAST"/>
+          </connectors>
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="250" height="80"/>
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos" x="156" y="48"/>
+          <restrictedParameterInstanceSets>
+            <restriction xsi:type="org-fortiss-sfit-restriction:RestrictionLiteral" stringRepresentation=""/>
+            <parameterInstanceSets parameter="123">
+              <valueSet xsi:type="org-fortiss-sfit-capabilities:IntParamValueSet" min="18" max="18"/>
+            </parameterInstanceSets>
+            <parameterInstanceSets parameter="124">
+              <valueSet xsi:type="org-fortiss-sfit-capabilities:EnumParamValueSet" containedMembers="127"/>
+            </parameterInstanceSets>
+          </restrictedParameterInstanceSets>
+        </containedElements>
+        <connections xsi:type="org-fortiss-sfit-process:ProcessElementConnection" xmi:id="119" id="119" source="59" target="116">
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Points" key="points"/>
+        </connections>
+        <connections xsi:type="org-fortiss-sfit-process:ProcessElementConnection" xmi:id="120" id="120" source="65" target="117">
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Points" key="points"/>
+        </connections>
+        <connections xsi:type="org-fortiss-sfit-process:ProcessElementConnection" xmi:id="121" id="121" source="118" target="66">
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Points" key="points"/>
+        </connections>
+        <restriction xsi:type="org-fortiss-sfit-restriction:RestrictionNegation" stringRepresentation="NOT TwistableHead">
+          <operand xsi:type="org-fortiss-sfit-restriction:RestrictionLiteral" stringRepresentation="TwistableHead" literal="40"/>
+        </restriction>
+      </containedElements>
+      <connectors xsi:type="org-fortiss-sfit-process:ProcessElementInConnector" xmi:id="59" id="59" name="Incoming" incoming="67" outgoing="119 246">
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="12" orientation="WEST"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos0" x="96" y="84"/>
+      </connectors>
+      <connectors xsi:type="org-fortiss-sfit-process:ProcessElementInConnector" xmi:id="65" id="65" name="Incoming" incoming="92" outgoing="120 247">
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="48" orientation="WEST"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos0" x="96" y="168"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos1" x="60" y="84"/>
+      </connectors>
+      <connectors xsi:type="org-fortiss-sfit-process:ProcessElementOutConnector" xmi:id="66" id="66" name="Pen" incoming="121 248" outgoing="267">
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="24" orientation="EAST"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos0" x="492" y="156"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos1" x="468" y="72"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos" x="76" y="100"/>
+      </connectors>
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="205" height="80"/>
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos" x="528" y="84"/>
+    </containedElements>
+    <containedElements xsi:type="org-fortiss-sfit-process:Step" xmi:id="44" id="44" name="InsertCartridge" requiredCapability="199">
+      <connectors xsi:type="org-fortiss-sfit-process:ProcessElementInConnector" xmi:id="63" id="63" name="Incoming" incoming="77">
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="84" orientation="SOUTH"/>
+      </connectors>
+      <connectors xsi:type="org-fortiss-sfit-process:ProcessElementOutConnector" xmi:id="64" id="64" name="Outcome" outgoing="91">
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="24" orientation="EAST"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos" x="52" y="40"/>
+      </connectors>
+      <connectors xsi:type="org-fortiss-sfit-process:ProcessElementInConnector" xmi:id="204" id="204" name="Cartridge" relatedParts="201">
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="12" orientation="WEST"/>
+      </connectors>
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="181" height="80"/>
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos" x="60" y="156"/>
+      <restrictedParameterInstanceSets>
+        <restriction xsi:type="org-fortiss-sfit-restriction:RestrictionLiteral" stringRepresentation="5mm_Cartridge_blue" literal="202"/>
+        <parameterInstanceSets parameter="200">
+          <valueSet xsi:type="org-fortiss-sfit-capabilities:IntParamValueSet" min="5" max="5"/>
+        </parameterInstanceSets>
+      </restrictedParameterInstanceSets>
+      <restrictedParameterInstanceSets>
+        <restriction xsi:type="org-fortiss-sfit-restriction:RestrictionLiteral" stringRepresentation="6mm_Cartridge_blue" literal="203"/>
+        <parameterInstanceSets parameter="200">
+          <valueSet xsi:type="org-fortiss-sfit-capabilities:IntParamValueSet" min="6" max="6"/>
+        </parameterInstanceSets>
+      </restrictedParameterInstanceSets>
+    </containedElements>
+    <containedElements xsi:type="org-fortiss-sfit-process:VariantContainer" xmi:id="46" id="46" name="PrepareHead">
+      <containedElements xsi:type="org-fortiss-sfit-process:Variant" xmi:id="47" id="47" name="PrintCustomImprint">
+        <containedElements xsi:type="org-fortiss-sfit-process:Step" xmi:id="54" id="54" name="PrintImprint" requiredCapability="105">
+          <connectors xsi:type="org-fortiss-sfit-process:ProcessElementOutConnector" xmi:id="55" id="55" name="Outcome" outgoing="57">
+            <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="24" orientation="EAST"/>
+          </connectors>
+          <connectors xsi:type="org-fortiss-sfit-process:ProcessElementInConnector" xmi:id="56" id="56" name="StandardHead" relatedParts="39">
+            <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="24" orientation="WEST"/>
+          </connectors>
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="250" height="80"/>
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos" x="60" y="36"/>
+          <restrictedParameterInstanceSets>
+            <restriction xsi:type="org-fortiss-sfit-restriction:RestrictionLiteral" stringRepresentation=""/>
+            <parameterInstanceSets parameter="137">
+              <valueSet xsi:type="org-fortiss-sfit-capabilities:IntParamValueSet" min="11" max="11"/>
+            </parameterInstanceSets>
+            <parameterInstanceSets parameter="138">
+              <valueSet xsi:type="org-fortiss-sfit-capabilities:IntParamValueSet" min="4" max="4"/>
+            </parameterInstanceSets>
+          </restrictedParameterInstanceSets>
+        </containedElements>
+        <connections xsi:type="org-fortiss-sfit-process:ProcessElementConnection" xmi:id="57" id="57" source="55" target="49">
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Points" key="points"/>
+        </connections>
+        <restriction xsi:type="org-fortiss-sfit-restriction:RestrictionLiteral" stringRepresentation="CustomImprint" literal="9"/>
+      </containedElements>
+      <containedElements xsi:type="org-fortiss-sfit-process:Variant" xmi:id="50" id="50" name="NoPrinting">
+        <containedElements xsi:type="org-fortiss-sfit-process:Step" xmi:id="51" id="51" name="PickHead">
+          <connectors xsi:type="org-fortiss-sfit-process:ProcessElementOutConnector" xmi:id="52" id="52" name="Outcome" outgoing="53">
+            <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="24" orientation="EAST"/>
+          </connectors>
+          <connectors xsi:type="org-fortiss-sfit-process:ProcessElementInConnector" xmi:id="58" id="58" name="Head">
+            <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="24" orientation="WEST"/>
+          </connectors>
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="250" height="80"/>
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos" x="96" y="48"/>
+        </containedElements>
+        <connections xsi:type="org-fortiss-sfit-process:ProcessElementConnection" xmi:id="53" id="53" source="52" target="49">
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Points" key="points"/>
+        </connections>
+        <restriction xsi:type="org-fortiss-sfit-restriction:RestrictionNegation" stringRepresentation="NOT CustomImprint">
+          <operand xsi:type="org-fortiss-sfit-restriction:RestrictionLiteral" stringRepresentation="CustomImprint" literal="9"/>
+        </restriction>
+      </containedElements>
+      <connectors xsi:type="org-fortiss-sfit-process:ProcessElementOutConnector" xmi:id="49" id="49" name="Head" incoming="53 57" outgoing="67">
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="24" orientation="EAST"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos1" x="408" y="72"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos0" x="336" y="60"/>
+      </connectors>
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="241" height="80"/>
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos" x="264" y="24"/>
+    </containedElements>
+    <containedElements xsi:type="org-fortiss-sfit-process:VariantContainer" xmi:id="72" id="72" name="InsertButton">
+      <containedElements xsi:type="org-fortiss-sfit-process:Variant" xmi:id="73" id="73" name="InsertButton">
+        <containedElements xsi:type="org-fortiss-sfit-process:Step" xmi:id="79" id="79" name="InsertButton" requiredCapability="199">
+          <connectors xsi:type="org-fortiss-sfit-process:ProcessElementInConnector" xmi:id="80" id="80" name="Incoming" incoming="83">
+            <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="12" orientation="WEST"/>
+          </connectors>
+          <connectors xsi:type="org-fortiss-sfit-process:ProcessElementOutConnector" xmi:id="81" id="81" name="Outcome" outgoing="84">
+            <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="24" orientation="EAST"/>
+          </connectors>
+          <connectors xsi:type="org-fortiss-sfit-process:ProcessElementInConnector" xmi:id="82" id="82" name="Button" relatedParts="34">
+            <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="36" orientation="WEST"/>
+          </connectors>
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="250" height="80"/>
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos" x="156" y="48"/>
+          <restrictedParameterInstanceSets>
+            <restriction xsi:type="org-fortiss-sfit-restriction:RestrictionLiteral" stringRepresentation=""/>
+            <parameterInstanceSets parameter="200">
+              <valueSet xsi:type="org-fortiss-sfit-capabilities:IntParamValueSet" min="8" max="8"/>
+            </parameterInstanceSets>
+          </restrictedParameterInstanceSets>
+        </containedElements>
+        <connections xsi:type="org-fortiss-sfit-process:ProcessElementConnection" xmi:id="83" id="83" source="74" target="80">
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Points" key="points"/>
+        </connections>
+        <connections xsi:type="org-fortiss-sfit-process:ProcessElementConnection" xmi:id="84" id="84" source="81" target="75">
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Points" key="points"/>
+        </connections>
+        <restriction xsi:type="org-fortiss-sfit-restriction:RestrictionLiteral" stringRepresentation="Button" literal="34"/>
+      </containedElements>
+      <containedElements xsi:type="org-fortiss-sfit-process:Variant" xmi:id="76" id="76" name="NoButton">
+        <connections xsi:type="org-fortiss-sfit-process:ProcessElementConnection" xmi:id="78" id="78" source="74" target="75">
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Points" key="points"/>
+        </connections>
+        <restriction xsi:type="org-fortiss-sfit-restriction:RestrictionNegation" stringRepresentation="NOT Button">
+          <operand xsi:type="org-fortiss-sfit-restriction:RestrictionLiteral" stringRepresentation="Button" literal="34"/>
+        </restriction>
+      </containedElements>
+      <connectors xsi:type="org-fortiss-sfit-process:ProcessElementInConnector" xmi:id="74" id="74" name="Body" outgoing="78 83" relatedParts="31">
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="12" orientation="WEST"/>
+      </connectors>
+      <connectors xsi:type="org-fortiss-sfit-process:ProcessElementOutConnector" xmi:id="75" id="75" name="Outcome" incoming="78 84" outgoing="77">
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos1" x="216" y="60"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos0" x="456" y="72"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="84"/>
+      </connectors>
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="181" height="80"/>
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos" x="60" y="276"/>
+    </containedElements>
+    <containedElements xsi:type="org-fortiss-sfit-process:VariantContainer" xmi:id="86" id="86" name="MountOpeningMechanism">
+      <containedElements xsi:type="org-fortiss-sfit-process:Variant" xmi:id="87" id="87" name="InsertSpring">
+        <containedElements xsi:type="org-fortiss-sfit-process:Step" xmi:id="93" id="93" name="InsertSpring" requiredCapability="199">
+          <connectors xsi:type="org-fortiss-sfit-process:ProcessElementInConnector" xmi:id="94" id="94" name="Incoming" incoming="97">
+            <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="12" orientation="WEST"/>
+          </connectors>
+          <connectors xsi:type="org-fortiss-sfit-process:ProcessElementOutConnector" xmi:id="95" id="95" name="Outcome" outgoing="98">
+            <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="24" orientation="EAST"/>
+          </connectors>
+          <connectors xsi:type="org-fortiss-sfit-process:ProcessElementInConnector" xmi:id="96" id="96" name="Spring" relatedParts="33">
+            <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="36" orientation="WEST"/>
+          </connectors>
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="250" height="80"/>
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos" x="132" y="60"/>
+          <restrictedParameterInstanceSets>
+            <restriction xsi:type="org-fortiss-sfit-restriction:RestrictionLiteral" stringRepresentation=""/>
+            <parameterInstanceSets parameter="200">
+              <valueSet xsi:type="org-fortiss-sfit-capabilities:IntParamValueSet" min="6" max="6"/>
+            </parameterInstanceSets>
+          </restrictedParameterInstanceSets>
+        </containedElements>
+        <connections xsi:type="org-fortiss-sfit-process:ProcessElementConnection" xmi:id="97" id="97" source="88" target="94">
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Points" key="points"/>
+        </connections>
+        <connections xsi:type="org-fortiss-sfit-process:ProcessElementConnection" xmi:id="98" id="98" source="95" target="89">
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Points" key="points"/>
+        </connections>
+        <restriction xsi:type="org-fortiss-sfit-restriction:RestrictionLiteral" stringRepresentation="PushToOpenMechanism" literal="32"/>
+      </containedElements>
+      <containedElements xsi:type="org-fortiss-sfit-process:Variant" xmi:id="90" id="90" name="InsertTwistPusher">
+        <containedElements xsi:type="org-fortiss-sfit-process:Step" xmi:id="99" id="99" name="InsertTwistPusher" requiredCapability="199">
+          <connectors xsi:type="org-fortiss-sfit-process:ProcessElementInConnector" xmi:id="100" id="100" name="Incoming" incoming="103">
+            <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="12" orientation="WEST"/>
+          </connectors>
+          <connectors xsi:type="org-fortiss-sfit-process:ProcessElementOutConnector" xmi:id="101" id="101" name="Outcome" outgoing="104">
+            <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="24" orientation="EAST"/>
+          </connectors>
+          <connectors xsi:type="org-fortiss-sfit-process:ProcessElementInConnector" xmi:id="102" id="102" name="TwistPusher" relatedParts="35">
+            <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="48" orientation="WEST"/>
+          </connectors>
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="250" height="80"/>
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos" x="156" y="48"/>
+          <restrictedParameterInstanceSets>
+            <restriction xsi:type="org-fortiss-sfit-restriction:RestrictionLiteral" stringRepresentation=""/>
+            <parameterInstanceSets parameter="200">
+              <valueSet xsi:type="org-fortiss-sfit-capabilities:IntParamValueSet" min="7" max="7"/>
+            </parameterInstanceSets>
+          </restrictedParameterInstanceSets>
+        </containedElements>
+        <connections xsi:type="org-fortiss-sfit-process:ProcessElementConnection" xmi:id="103" id="103" source="88" target="100">
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Points" key="points"/>
+        </connections>
+        <connections xsi:type="org-fortiss-sfit-process:ProcessElementConnection" xmi:id="104" id="104" source="101" target="89">
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Points" key="points"/>
+        </connections>
+        <restriction xsi:type="org-fortiss-sfit-restriction:RestrictionLiteral" stringRepresentation="TwistPusher" literal="35"/>
+      </containedElements>
+      <connectors xsi:type="org-fortiss-sfit-process:ProcessElementInConnector" xmi:id="88" id="88" name="In" incoming="91" outgoing="97 103">
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="24" orientation="WEST"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos0" x="60" y="72"/>
+      </connectors>
+      <connectors xsi:type="org-fortiss-sfit-process:ProcessElementOutConnector" xmi:id="89" id="89" name="Out" incoming="98 104" outgoing="92">
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="24" orientation="EAST"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos0" x="444" y="84"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos1" x="468" y="72"/>
+      </connectors>
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="241" height="80"/>
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos" x="264" y="156"/>
+    </containedElements>
+    <containedElements xsi:type="org-fortiss-sfit-process:SubProcess" xmi:id="264" id="264" name="Finishing">
+      <containedElements xsi:type="org-fortiss-sfit-process:Step" xmi:id="269" id="269" name="Polish">
+        <connectors xsi:type="org-fortiss-sfit-process:ProcessElementInConnector" xmi:id="270" id="270" name="Incoming" incoming="279">
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="24" orientation="WEST"/>
+        </connectors>
+        <connectors xsi:type="org-fortiss-sfit-process:ProcessElementOutConnector" xmi:id="271" id="271" name="Outcome" outgoing="273">
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="24" orientation="EAST"/>
+        </connectors>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="133" height="80"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos" x="264" y="36"/>
+      </containedElements>
+      <containedElements xsi:type="org-fortiss-sfit-process:Step" xmi:id="275" id="275" name="Clean">
+        <connectors xsi:type="org-fortiss-sfit-process:ProcessElementInConnector" xmi:id="276" id="276" name="Incoming" incoming="278">
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="24" orientation="WEST"/>
+        </connectors>
+        <connectors xsi:type="org-fortiss-sfit-process:ProcessElementOutConnector" xmi:id="277" id="277" name="Outcome" outgoing="279">
+          <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="24" orientation="EAST"/>
+        </connectors>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="145" height="80"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos" x="96" y="36"/>
+      </containedElements>
+      <connections xsi:type="org-fortiss-sfit-process:ProcessElementConnection" xmi:id="273" id="273" source="271" target="266">
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Points" key="points"/>
+      </connections>
+      <connections xsi:type="org-fortiss-sfit-process:ProcessElementConnection" xmi:id="278" id="278" source="265" target="276">
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Points" key="points"/>
+      </connections>
+      <connections xsi:type="org-fortiss-sfit-process:ProcessElementConnection" xmi:id="279" id="279" source="277" target="270">
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Points" key="points"/>
+      </connections>
+      <connectors xsi:type="org-fortiss-sfit-process:ProcessElementInConnector" xmi:id="265" id="265" name="Material" incoming="267" outgoing="278">
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos" x="48" y="60"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="24" orientation="WEST"/>
+      </connectors>
+      <connectors xsi:type="org-fortiss-sfit-process:ProcessElementOutConnector" xmi:id="266" id="266" name="" incoming="273">
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos" x="420" y="60"/>
+        <layoutData xsi:type="org-fortiss-tooling-base-model-layout:OffsetOrientation" key="coffsetorient" offset="24" orientation="EAST"/>
+      </connectors>
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Dimension" key="dim" width="133" height="80"/>
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Point" key="pos" x="756" y="84"/>
+    </containedElements>
+    <connections xsi:type="org-fortiss-sfit-process:ProcessElementConnection" xmi:id="67" id="67" source="49" target="59">
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Points" key="points"/>
+    </connections>
+    <connections xsi:type="org-fortiss-sfit-process:ProcessElementConnection" xmi:id="77" id="77" source="75" target="63">
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Points" key="points"/>
+    </connections>
+    <connections xsi:type="org-fortiss-sfit-process:ProcessElementConnection" xmi:id="91" id="91" source="64" target="88">
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Points" key="points"/>
+    </connections>
+    <connections xsi:type="org-fortiss-sfit-process:ProcessElementConnection" xmi:id="92" id="92" source="89" target="65">
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Points" key="points"/>
+    </connections>
+    <connections xsi:type="org-fortiss-sfit-process:ProcessElementConnection" xmi:id="267" id="267" source="66" target="265">
+      <layoutData xsi:type="org-fortiss-tooling-base-model-layout:Points" key="points"/>
+    </connections>
+  </rootElements>
+</org-fortiss-sfit-product:FileProject>

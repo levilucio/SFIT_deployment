@@ -1,0 +1,11 @@
+˜<?xml version="1.0" encoding="UTF-8"?>
+<org-fortiss-sfit-product:FileProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org-fortiss-sfit-assembly="http://www.fortiss.org/sfit/assembly" xmlns:org-fortiss-sfit-capabilities="http://www.fortiss.org/sfit/capabilities" xmlns:org-fortiss-sfit-characteristics="http://www.fortiss.org/sfit/characteristics" xmlns:org-fortiss-sfit-deployment="http://www.fortiss.org/sfit/deployment" xmlns:org-fortiss-sfit-process="http://www.fortiss.org/sfit/process" xmlns:org-fortiss-sfit-product="http://www.fortiss.org/sfit/sfitproduct" xmlns:org-fortiss-sfit-product_1="http://www.fortiss.org/sfit/product" xmlns:org-fortiss-sfit-product_2="http://www.fortiss.org/sfit/product/part" xmlns:org-fortiss-sfit-resources="http://www.fortiss.org/sfit/resources" xmi:id="0" name="JustAnEmptyProj">
+  <rootElements xsi:type="org-fortiss-sfit-characteristics:FeatureModel" xmi:id="1" id="1" name="Product Features"/>
+  <rootElements xsi:type="org-fortiss-sfit-deployment:ProcessAssemblyDeployment" xmi:id="2" id="2" name="Recipe Assembly Deployment" stepContainer="5" assemblyLine="3"/>
+  <rootElements xsi:type="org-fortiss-sfit-assembly:Assembly" xmi:id="3" id="3" name="Assembly"/>
+  <rootElements xsi:type="org-fortiss-sfit-capabilities:CapabilityList" xmi:id="4" id="4" name="Capabilities"/>
+  <rootElements xsi:type="org-fortiss-sfit-process:Process" xmi:id="5" id="5" name="Recipe"/>
+  <rootElements xsi:type="org-fortiss-sfit-resources:ResourceList" xmi:id="6" id="6" name="Resources"/>
+  <rootElements xsi:type="org-fortiss-sfit-product_1:ProductVariantConfigurationList" xmi:id="7" id="7" name="Product List" partList="8"/>
+  <rootElements xsi:type="org-fortiss-sfit-product_2:PartList" xmi:id="8" id="8" name="BOM"/>
+</org-fortiss-sfit-product:FileProject>

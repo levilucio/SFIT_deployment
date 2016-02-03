@@ -1,0 +1,28 @@
+<project>
+
+	<target name="main" depends="clean">
+		
+		<echo message= "Loading project"/>
+		<epsilon.emf.loadModel
+		      name="inputSFitModel"
+		      read="true"
+		      store="false"
+		      metamodeluri="http://www.fortiss.org/sfit/sfitproduct"
+		      modelfile="../JustAnEmptyProj.sfit"
+		    />
+
+		<echo message= "Creating presence condition file"/>
+		<epsilon.egl src="./GenPresenceConds.egl">
+			<model ref="inputSFitModel"/>
+		</epsilon.egl>
+		
+	</target>
+	
+    <target name="clean">
+		<delete quiet="false" failonerror="false">
+    		<fileset dir="./generated"/>
+		</delete>
+    	<mkdir dir="./generated"/>    
+    </target>	
+	
+</project>
