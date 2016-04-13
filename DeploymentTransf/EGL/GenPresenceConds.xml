@@ -7,8 +7,8 @@
 		      name="inputSFitModel"
 		      read="true"
 		      store="false"
-		      metamodeluri="http://www.fortiss.org/sfit/sfitproduct"
-		      modelfile="../JustAnEmptyProj.sfit"
+		      metamodeluri="http://www.fortiss.org/sfit/product"
+		      modelfile="../PenLevi.sfit"
 		    />
 
 		<echo message= "Creating presence condition file"/>

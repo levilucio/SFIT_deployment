@@ -1,1 +1,102 @@
-Hello World!
+[%
+var z3input = "";
+
+// start by building the formula for the feature model
+
+for (inst in inputSFitModel.allInstances())
+	if (inst.eClass().name == "FeatureModel") {
+		z3input = z3input + "(and ";
+		for (feat in inst.subFeatures) {
+			z3input = z3input + buildFeatureModelFormula(feat) + " ";
+		}
+		z3input = z3input + ")\n";
+	}
+	
+
+// build the presence conditions for the bill of materials
+
+for (inst in inputSFitModel.allInstances())
+	if (inst.eClass().name == "PartList") {
+		for (part in inst.containedParts) {
+			z3input = z3input + treatbom(part);		
+		}
+	}
+
+// build the presence conditions for the recipe
+
+for (inst in inputSFitModel.allInstances())
+	if (inst.eClass().name == "Process") {
+		for (step in inst.containedElements) {
+			z3input = z3input + treatProcess(step);		
+		}
+	}
+%]
+
+[%=z3input%]
+
+[%
+operation buildFeatureModelFormula(feat){
+	var featureModelFormula = "";
+	
+	if (feat.eClass().name == "OptionalFeature") {
+		featureModelFormula = buildFeatureModelFormula(feat.feature);
+	}	
+	else {
+	
+		if (feat.eClass().name == "AlternativeFeature") {
+			featureModelFormula = featureModelFormula + "(xor  ";
+			for (subFeature in feat.alternatives) {
+				featureModelFormula =  featureModelFormula + buildFeatureModelFormula(subFeature) + " ";
+			}
+			featureModelFormula =  featureModelFormula + ")";
+		}
+		else if (feat.eClass().name == "FeatureContainer") {
+			if (feat.subFeatures.size() == 0)
+				featureModelFormula = featureModelFormula + feat.name;
+			else {
+				featureModelFormula = featureModelFormula + "(and  ";
+				for (subFeature in feat.subFeatures) {
+					featureModelFormula =  featureModelFormula + buildFeatureModelFormula(subFeature) + " ";
+				}
+				featureModelFormula =  featureModelFormula + ")";
+			}
+		}
+	}
+	
+	return featureModelFormula;	
+}
+%]
+
+
+[%
+operation treatbom(part){
+	
+	var bomFormula = "";
+	
+	bomFormula = bomFormula + part.eClass().name + ";" + part.name + ";";
+
+	if (part.restriction.stringRepresentation == "")
+		bomFormula = bomFormula + "true\n";		
+	else
+		bomFormula = bomFormula + part.restriction.stringRepresentation + "\n";
+
+	if (part.eClass().name == "ComposedPart") {
+		for (subpart in part.compositeParts) {
+			bomFormula = bomFormula + treatbom(subpart);
+		}
+	} 
+	
+	return bomFormula;	
+}
+%]
+
+[%
+operation treatProcess(step){
+	
+	var processFormula = "";
+	
+	processFormula = processFormula + step.eClass().name + ";" + step.name + ";" + "true" + "\n";
+
+	return processFormula;	
+}
+%]
